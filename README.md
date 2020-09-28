@@ -1,13 +1,8 @@
-[![Project status](https://badgen.net/badge/project%20status/stable%20%26%20actively%20maintaned?color=green)](https://github.com/homecentr/docker-portainer-agent/graphs/commit-activity) [![](https://badgen.net/github/label-issues/homecentr/docker-portainer-agent/bug?label=open%20bugs&color=green)](https://github.com/homecentr/docker-portainer-agent/labels/bug) [![](https://badgen.net/github/release/homecentr/docker-portainer-agent)](https://hub.docker.com/repository/docker/homecentr/portainer-agent)
-[![](https://badgen.net/docker/pulls/homecentr/portainer-agent)](https://hub.docker.com/repository/docker/homecentr/portainer-agent) 
-[![](https://badgen.net/docker/size/homecentr/portainer-agent)](https://hub.docker.com/repository/docker/homecentr/portainer-agent)
-
-![CI/CD on master](https://github.com/homecentr/docker-portainer-agent/workflows/CI/CD%20on%20master/badge.svg)
-![Regular Docker image vulnerability scan](https://github.com/homecentr/docker-portainer-agent/workflows/Regular%20Docker%20image%20vulnerability%20scan/badge.svg)
+# jordvisser - Portainer agent
+This docker image is a repack of the HomeCentr [portainer agent](https://github.com/homecentr/docker-portainer-agent) to use alpine latest as the original [portainer agent](https://portainer.io) does.
 
 
-# HomeCentr - Portainer agent
-This docker image is a repack of the original [portainer agent](https://www.portainer.io/) compliant with the HomeCenter docker images standard (S6 overlay, privilege drop etc.).
+# Orginal HomeCentr README - Portainer agent
 
 ## Usage
 
@@ -16,7 +11,7 @@ version: "3.7"
 services:
   portainer-agent:
     build: .
-    image: homecentr/portainer-agent
+    image: jordvisser/portainer-agent
     restart: unless-stopped
     environment:
       PORTAINER_AGENT_ARGS: ""   
@@ -67,19 +62,6 @@ The container supports privilege drop. Even though the container starts as root,
 :warning: Do not change the container user directly using the `user` Docker compose property or using the `--user` argument. This would break the privilege drop logic.
 
 :bulb: To grant a user the permission to read Docker socket, you can set the PGID to the ID of the docker group on host.
-
-
-
-
-
-
-
-
-
-
-
-
-# HomeCentr - portainer-agent
 
 Note: PUID or PGID must give access to docker.sock
 
